@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\lstset{
+    language=Octave,
+    frame=single,
+    xleftmargin=.1\textwidth, xrightmargin=.1\textwidth
+}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2.1cm,bindingoffset=0cm]{geometry}
+\usepackage{mathtools}
+
+\title{Теория Вероятности и Математическая Статистика}
+\author{Довжик Лев M3339}
+\date{Май 2019}
+
+\begin{document}
+\maketitle
+\begin{center}
+    Метод Монте-Карло \\
+    Вариант №8
+\end{center}
+
+\section{Оценка объёма}
+    \subsection{Задание}
+        Методом Монте-Карло оценить объем части тела \{$F(\tilde x) \leq c$\}, заключенной в $k$-мерном кубе с ребром $[0, 1]$. 
+        Функция имеет вид $F(\tilde x) = f(x_1) + f(x_2) + ... + f(x_k)$.
+        Для выбранной надежности $\gamma \geq 0.95$ указать асимптотическую точность оценки и построить асимптотический доверительный интервал для истинного значения объёма. \\
+        Используя объём выборки $n = 10^4$ и $n = 10^6$, оценить скорость сходимости и показать, что доверительные интервалы пересекаются.
+    \subsection{Входные данные}
+        \begin{itemize}
+            \item Функция имеет вид $f(x) = \ln(9x + 1)$
+            \item Куб размерностью $k = 6$
+            \item Параметр $c = 8.61$ 
+        \end{itemize}
+    \subsection{Исходный код программы}
+        \begin{minipage}{\linewidth}
+            \lstinputlisting{figureVolume.m}
+        \end{minipage}
+    \subsection{Выходные данные}
+    \begin{center}
+\begin{tabular}{c}
+        \begin{minipage}{\linewidth}
+            \lstinputlisting{figureOutput.txt}
+        \end{minipage}
+        \end{tabular}
+        \end{center}
+    \subsection{Вывод}
+        Доверительный интервал при $n = 10^6$ содержится в интервале при $n = 10^4$.\\
+        При увеличении числа итераций в $100$ раз ширина доверительного интервала уменьшилось в $10$ раз.
+\section{Оценка Интеграла}
+    \subsection{Задание}
+    Построить оценку интегралов (представить интеграл как математическое ожидание функции,
+    зависящей от случайной величины с известной плотностью) и для выбранной надежности $\gamma \geq 0.95$ указать
+    асимптотическую точность оценки и построить асимптотический доверительный интервал для истинного
+    значения интеграла. 
+    \subsection{Интеграл 1}
+        \subsubsection{Входные данные}
+            \begin{itemize}
+                \item Интеграл имеет вид ${\displaystyle \int\limits_{-\infty}^{\infty} \left(x - 2\right)^3 exp \left( \dfrac{-(x - 1)^2}{3} \right) dx}$
+            \end{itemize}
+        \subsubsection{Исходный код программы}
+        \begin{minipage}{\linewidth}
+            \lstinputlisting{integralValue1.m}
+        \end{minipage}
+        \subsubsection{Выходные данные}
+        \begin{minipage}{\linewidth}
+            \lstinputlisting{integralOutput1.txt}
+        \end{minipage}
+        \subsubsection{Вывод}
+        Истинное значение интеграла содержится в доверительном интервале при $n = 10^4$ и $n = 10^6$. Значение, полученное методом Монте-Карло отличается от значения, полученного методом $quad$, на $7.2 \cdot 10^{-3}$.\\
+        При увеличении числа итераций в $100$ раз, ширина доверительного интервала уменьшилось в $10$ раз.
+    \subsection{Интеграл 2}
+        \subsubsection{Входные данные}
+            \begin{itemize}
+                \item Интеграл имеет вид ${\displaystyle \int\limits_{-1}^{2} \sqrt{1 + x} \cos x dx}$
+            \end{itemize}
+        \subsubsection{Исходный код программы}
+        \begin{minipage}{\linewidth}
+            \lstinputlisting{integralValue2.m}
+        \end{minipage}
+        \subsubsection{Выходные данные}
+        \begin{minipage}{\linewidth}
+            \lstinputlisting{integralOutput2.txt}
+        \end{minipage}
+        \subsubsection{Вывод}
+        Истинное значение интеграла содержится в доверительном интервале при $n = 10^4$ и $n = 10^6$. Значение, полученное методом Монте-Карло отличается от значения, полученного методом $quad$, на $2.8 \cdot 10^{-4}$.\\
+        При увеличении числа итераций в $100$ раз, ширина доверительного интервала уменьшилось в $10$ раз.
+\end{document}
