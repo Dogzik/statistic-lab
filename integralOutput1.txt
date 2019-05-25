@@ -1,0 +1,10 @@
+Sample answer = -16.8849
+
+N = 10000
+Value is -16.7469 (from -17.4549 to -16.0389)
+Delta is 0.708002
+
+N = 1000000
+Value is -16.8777 (from -16.9501 to -16.8053)
+Delta is 0.0724172
+
