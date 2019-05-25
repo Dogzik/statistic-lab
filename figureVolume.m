@@ -14,6 +14,7 @@ function calc_volume(n)
   F_x = sum(arrayfun(@f, X));
   V = mean(F_x <= c);
   d = T * sqrt(V * (1 - V) / n);
+  printf("N = %d\n", n);
   printf("Volume is %g (from %g to %g)\n", V, V - d, V + d);
   printf("Delta is %g\n\n", d); 
 endfunction

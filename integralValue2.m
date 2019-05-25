@@ -13,6 +13,7 @@ function calc_value(n)
   F_x = arrayfun(@f, X) * (b - a);
   V = mean(F_x);
   d = (std(F_x) * T) / sqrt(n);
+  printf("N = %d\n", n);
   printf("Value is %g (from %g to %g)\n", V, V - d, V + d);
   printf("Delta is %g\n\n", d); 
 endfunction
